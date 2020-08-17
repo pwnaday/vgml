@@ -1,11 +1,20 @@
 """ ML Imports """
 from __future__ import absolute_import, division, print_function, unicode_literals
-import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras import Sequential
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
+import argparse
+import random
+import torch
+import torch.nn as nn
+import torch.nn.parallel
+import torch.backends.cudnn as cudnn
+import torch.optim as optim
+import torch.utils.data
+import torchvision.datasets as dset
+import torchvision.transforms as transforms
+import torchvision.utils as vutils
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+from IPython.display import HTML
 import os
 
 """ Vector graphics imports """
@@ -24,4 +33,9 @@ def make_yinyang(size=200, r=80, filename="yin_yang.png"):
     yin_yang.translate([size/2,size/2]).draw(surface)
     surface.write_to_png(filename)
     return 0
+
+def main() :
+    seed = 999
+    random.seed(seed)
+    torch.manual_seed(seed)
 
